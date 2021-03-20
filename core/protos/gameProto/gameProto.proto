@@ -1,0 +1,67 @@
+syntax = "proto2";
+
+message client_ping_c2s {
+}
+
+message client_login_c2s {
+  required uint64 RId = 1;
+  required string RName = 2;
+}
+
+message client_login_s2c {
+  required uint64 RId = 1;
+  required string RName = 2;
+  required string Token = 3;
+  required uint64 Error = 4;
+}
+
+//加入聊天C2S(2001)
+message client_chatJoin_c2s {
+  required uint64 RId = 1;
+}
+
+//加入聊天S2C(2002)
+message client_chatJoin_s2c {
+}
+
+//聊天消息C2S(2003)
+message client_chat_c2s {
+  required string Msg = 1;
+}
+
+//聊天消息S2C(2004)
+message client_chat_s2c {
+  required uint64 speakerId   = 1;
+  required string speakerName = 2;
+  required string speakerText = 3;
+}
+
+//聊天历史S2C(2005)
+message client_chatHistory_s2c {
+  repeated uint64 speakerId   = 1;
+  repeated string speakerName = 2;
+  repeated string speakerText = 3;
+  repeated string time        = 4;
+}
+
+//聊天popular(2006)
+message client_chatPopular_c2s {
+  required uint32 n = 1;
+}
+//聊天popular(2007)
+message client_chatPopular_s2c {
+  required string world= 1;
+}
+
+//聊天popular(2008)
+message client_chatStats_c2s {
+  required string rname= 1;
+}
+
+//聊天popular(2009)
+message client_chatStats_s2c {
+  required string rname= 1;
+  required string time = 2;
+}
+
+
